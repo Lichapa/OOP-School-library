@@ -10,15 +10,20 @@ class App
     @books = []
     @people = []
     @rentals = []
+    @classroom = 'microverse'
   end
 
   def start_library
     puts 'Welcome to my School Library!'
-    until list_of_options 
-      user_input    
-    end
+    until list_of_options
+      answer = gets.chomp.to_i
+      if answer == 7
+        puts 'You have selected exit! bye'
+        exit
+      end
 
-    
+      user_input answer
+    end
   end
 
   def list_all_books
@@ -53,9 +58,9 @@ class App
     age = gets.chomp.to_i
     print 'Enter name: '
     name = gets.chomp
-    @people.push(Student.new(classroom = "microverse", age, name))
+    @people.push(Student.new(@classroom, age, name))
     puts 'Student created successfully'
-    end
+  end
 
   def create_teacher
     puts 'Create a new teacher'
