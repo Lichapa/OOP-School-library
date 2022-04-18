@@ -66,24 +66,16 @@ class App
 
   def create_teacher
     puts 'Create a new teacher'
-    print 'Enter teacher age: '
-    age = gets.chomp.to_i
-    print 'Enter teacher name: '
-    name = gets.chomp
-    print 'Enter teacher specialization: '
-    specialization = gets.chomp
-    @people.push(Teacher.new(specialization, age, name))
+    inputs = input(['Enter teacher age', 'Enter teacher name', 'Enter teacher specialization'])
+    @people.push(Teacher.new(inputs[2], inputs[0], inputs[1]))
     puts 'Teacher created successfully'
   end
 
   def create_book()
     puts 'Create a new book'
-    print 'Enter title: '
-    title = gets.chomp
-    print 'Enter author: '
-    author = gets
-    @books.push(Book.new(title, author))
-    puts "Book #{title} created successfully."
+    inputs = input(['Enter title', 'Enter author' ])
+    @books.push(Book.new(inputs[0], inputs[1]))
+    puts "Book #{inputs[0]} created successfully."
   end
 
   def create_rental
