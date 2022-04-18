@@ -3,6 +3,8 @@ require './app'
 class Main
   def initialize
     @books = []
+    @people = []
+    @rentals = []
   end
 
   def main
@@ -39,15 +41,15 @@ class Main
     when 1
       App.new.list_all_books(@books)
     when 2
-      App.new.list_all_people
+      App.new.list_all_people(@people)
     when 3
-      App.new.create_person
+      App.new.create_person(@people)
     when 4
       App.new.create_book(@books)
     when 5
-      App.new.create_rental
+      App.new.create_rental(@rentals, @books, @people)
     when 6
-      App.new.list_all_rentals
+      App.new.list_all_rentals(@rentals, @books, @people)
     else
       puts 'Enter numbers between 1 and 7'
     end
