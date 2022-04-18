@@ -4,9 +4,13 @@ module AppBooks
     books.each { |book| puts "[Book] Title: #{book.title}, Author: #{book.author}" }
   end
 
-  def create_book(books)
+  def book_inputs
     puts 'Create a new book'
-    inputs = input(['Enter title', 'Enter author'])
+    input(['Enter title', 'Enter author'])
+  end
+
+  def create_book(books)
+    inputs = book_inputs
     books.push(Book.new(inputs[0], inputs[1]))
     puts "Book #{inputs[0]} created successfully."
   end

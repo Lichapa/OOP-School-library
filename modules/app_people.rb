@@ -18,10 +18,14 @@ module AppPeople
     end
   end
 
+  def student_inputs
+    puts 'Create a new student'
+    input(['Enter student age', 'Enter name', 'Has parent permission? [Y/N]'])
+  end
+
   def create_student(people)
     classroom = 'Microverse'
-    puts 'Create a new student'
-    inputs = input(['Enter student age', 'Enter name', 'Has parent permission? [Y/N]'])
+    inputs = student_inputs
     case inputs[2].downcase
     when 'n'
       puts 'Student does not have parent permission, can not rent books'
@@ -31,9 +35,13 @@ module AppPeople
     end
   end
 
-  def create_teacher(people)
+  def teacher_inputs
     puts 'Create a new teacher'
-    inputs = input(['Enter teacher age', 'Enter teacher name', 'Enter teacher specialization'])
+    input(['Enter teacher age', 'Enter teacher name', 'Enter teacher specialization'])
+  end
+
+  def create_teacher(people)
+    inputs = teacher_inputs
     people.push(Teacher.new(inputs[2], inputs[0], inputs[1]))
     puts 'Teacher created successfully'
   end

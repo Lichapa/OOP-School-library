@@ -1,20 +1,20 @@
 module AppRentals
-  def create_rental(rentals, books, people)
+  def rentals_input(books, people)
     puts 'Select which book you want to rent by entering its number'
     books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
-
     book_id = gets.chomp.to_i
-
     puts 'Select a person from the list by its number'
     people.each_with_index do |person, index|
       puts "#{index}) [#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
-
     person_id = gets.chomp.to_i
+    date = input(['date'])[0]
+    [date, book_id, person_id]
+  end
 
-    date = input(['date'])
-
-    rentals.push(Rental.new(date[0], books[book_id], people[person_id]))
+  def create_rental(rentals, books, people)
+    inputs = rentals_input(books, people)
+    rentals.push(Rental.new(inputs[0], books[inputs[1]], people[inputs[2]]))
     puts 'Rental created successfully'
   end
 
@@ -22,7 +22,6 @@ module AppRentals
     if rentals.empty?
       puts 'No one has borrowed a book.'
     else
-
       puts 'People IDs'
       people.each do |person|
         puts "id: #{person.id}"
