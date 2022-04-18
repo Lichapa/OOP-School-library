@@ -4,8 +4,10 @@ require './teacher'
 require './book'
 require './classroom'
 require './rental'
+require_relative './modules/input'
 
 class App
+  include Input
   def initialize
     @books = []
     @people = []
@@ -39,10 +41,8 @@ class App
   end
 
   def create_person
-    print 'To create a student, press 1, to create a teacher, press 2 : '
-    option = gets.chomp
-
-    case option
+    option = input(['To create a student, press 1, to create a teacher, press 2'])
+    case option[0]
     when '1'
       create_student
     when '2'
@@ -54,17 +54,12 @@ class App
 
   def create_student
     puts 'Create a new student'
-    print 'Enter student age: '
-    age = gets.chomp.to_i
-    print 'Enter name: '
-    name = gets.chomp
-    print 'Has parent permission? [Y/N]: '
-    parent_permission = gets.chomp.downcase
-    case parent_permission
+    inputs = input(['Enter student age', 'Enter name', 'Has parent permission? [Y/N]'])
+    case inputs[2].downcase
     when 'n'
       puts 'Student does not have parent permission, can not rent books'
     when 'y'
-      @people.push(Student.new(@classroom, age, name))
+      @people.push(Student.new(@classroom, inputs[0], inputs[1]))
       puts 'Student created successfully'
     end
   end
