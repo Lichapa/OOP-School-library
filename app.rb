@@ -4,34 +4,36 @@ require './teacher'
 require './book'
 require './classroom'
 require './rental'
-require_relative './modules/input'
+require './modules/input'
+require './modules/app_books'
 
 class App
   include Input
-  def initialize
-    @books = []
-    @people = []
-    @rentals = []
-    @classroom = 'microverse'
-  end
+  include AppBooks
+  # def initialize
+  #   @books = []
+  #   @people = []
+  #   @rentals = []
+  #   @classroom = 'microverse'
+  # end
 
-  def start_library
-    puts 'Welcome to my School Library!'
-    until list_of_options
-      answer = gets.chomp.to_i
-      if answer == 7
-        puts 'You have selected exit! bye'
-        exit
-      end
+  # def start_library
+  #   puts 'Welcome to my School Library!'
+  #   until list_of_options
+  #     answer = gets.chomp.to_i
+  #     if answer == 7
+  #       puts 'You have selected exit! bye'
+  #       exit
+  #     end
 
-      user_input answer
-    end
-  end
+  #     user_input answer
+  #   end
+  # end
 
-  def list_all_books
-    puts 'Database is empty! Add a book.' if @books.empty?
-    @books.each { |book| puts "[Book] Title: #{book.title}, Author: #{book.author}" }
-  end
+  # def list_all_books
+  #   puts 'Database is empty! Add a book.' if @books.empty?
+  #   @books.each { |book| puts "[Book] Title: #{book.title}, Author: #{book.author}" }
+  # end
 
   def list_all_people
     puts 'Database is empty! Add a person.' if @people.empty?
@@ -71,12 +73,12 @@ class App
     puts 'Teacher created successfully'
   end
 
-  def create_book()
-    puts 'Create a new book'
-    inputs = input(['Enter title', 'Enter author' ])
-    @books.push(Book.new(inputs[0], inputs[1]))
-    puts "Book #{inputs[0]} created successfully."
-  end
+  # def create_book()
+  #   puts 'Create a new book'
+  #   inputs = input(['Enter title', 'Enter author' ])
+  #   @books.push(Book.new(inputs[0], inputs[1]))
+  #   puts "Book #{inputs[0]} created successfully."
+  # end
 
   def create_rental
     puts 'Select which book you want to rent by entering its number'
