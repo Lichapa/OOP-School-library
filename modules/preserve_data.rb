@@ -1,6 +1,3 @@
-# require './student'
-# require './teacher'
-# require './rental'
 require 'json'
 
 module ProcessData
