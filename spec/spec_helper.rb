@@ -1,0 +1,7 @@
+require './book'
+require './person'
+require './rental'
+require './student'
+require './teacher'
+require './decorator'
+require './classroom'
