@@ -1,0 +1,15 @@
+[
+  {
+    "id" : 717,
+    "role" : "Teacher",
+    "age" : "30",
+    "name" : "Mphatso",
+    "specialization" : "IT"
+  },
+  {
+    "id" : 680,
+    "role" : "Student",
+    "age" : "7",
+    "name" : "Travis"
+  }
+]

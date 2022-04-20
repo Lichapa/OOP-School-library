@@ -1,10 +1,13 @@
 require './app'
+require './modules/preserve_data'
 
 class Main
+  include ProcessData
+
   def initialize
-    @books = []
-    @people = []
-    @rentals = []
+    @books = populate_books
+    @people = populate_people
+    @rentals = populate_rentals(@people, @books)
   end
 
   def main
