@@ -1,0 +1,21 @@
+[
+  {
+    "id" : 429,
+    "role" : "Student",
+    "age" : "21",
+    "name" : "Adorn"
+  },
+  {
+    "id" : 174,
+    "role" : "Teacher",
+    "age" : "22",
+    "name" : "Hammas",
+    "specialization" : "Programming"
+  },
+  {
+    "id" : 662,
+    "role" : "Student",
+    "age" : "19",
+    "name" : "Jos"
+  }
+]
