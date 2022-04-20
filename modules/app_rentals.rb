@@ -17,16 +17,14 @@ module AppRentals
 
   def create_rental(rentals, books, people)
     inputs = rentals_input(books, people)
-    p inputs
     rental = Rental.new(inputs[0], books[inputs[1]], people[inputs[2]])
-    p rental
     rentals.push(rental)
-    rental_data = {date: rental.date, book_index: inputs[1], person_index: inputs[2]}
+    rental_data = { date: rental.date, book_index: inputs[1], person_index: inputs[2] }
     update_data('rentals', rental_data)
     puts 'Rental created successfully'
   end
 
-  def list_all_rentals(rentals, books, people)
+  def list_all_rentals(rentals, _books, people)
     if rentals.empty?
       puts 'No one has borrowed a book.'
     else
@@ -42,8 +40,6 @@ module AppRentals
         if rental.person.id == id[0].to_i
           puts "Peson: #{rental.person.name}  Date: #{rental.date},
           Book: '#{rental.book.title}' by #{rental.book.author}"
-        else
-          puts 'No records where found for the given ID'
         end
       end
     end

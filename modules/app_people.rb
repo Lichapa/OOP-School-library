@@ -4,9 +4,8 @@ module AppPeople
   include ProcessData
   def list_all_people(people)
     puts 'Database is empty! Add a person.' if people.empty?
-    p people
     people.each do |person|
-      puts "Name: #{person.name}, Age: #{person.age}, id: #{person.id}"
+      puts "[#{person.type}], Name: #{person.name}, Age: #{person.age}, id: #{person.id}"
     end
   end
 
@@ -29,15 +28,15 @@ module AppPeople
 
   def create_student(people)
     classroom = 'Microverse'
-    role = 'student'
+    role = 'Student'
     inputs = student_inputs
     case inputs[2].downcase
     when 'n'
       puts 'Student does not have parent permission, can not rent books'
     when 'y'
-      person = Student.new(classroom, inputs[0], inputs[1]) 
+      person = Student.new(classroom, inputs[0], inputs[1])
       people.push(person)
-      person_data = {id: person.id, role: role, age: person.age, name: person.name }
+      person_data = { id: person.id, role: role, age: person.age, name: person.name }
       update_data('people', person_data)
       puts 'Student created successfully'
     end
@@ -53,8 +52,8 @@ module AppPeople
     inputs = teacher_inputs
     person = Teacher.new(inputs[2], inputs[0], inputs[1])
     people.push(person)
-    person_data = { id: person.id, role: role,  age: person.age, name: person.name,
-    specialization: inputs[2]  }
+    person_data = { id: person.id, role: role, age: person.age, name: person.name,
+                    specialization: inputs[2] }
     update_data('people', person_data)
     puts 'Teacher created successfully'
   end

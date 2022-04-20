@@ -32,9 +32,7 @@ module ProcessData
 
   def populate_people
     fetch_data('people').map do |person|
-       puts person
       case person['role']
-       
       when 'Student'
         Student.new(person['age'], person['parent_permission'], person['name'])
       when 'Teacher'
@@ -47,10 +45,8 @@ module ProcessData
 
   def populate_rentals(people, books)
     stored_rentals = fetch_data('rentals')
-    p stored_rentals
     stored_rentals.map do |rental|
-      Rental.new(rental['date'], rental['book_index'], rental['person_index']  )
+      Rental.new(rental['date'], books[rental['book_index']], people[rental['person_index']])
     end
   end
 end
-    

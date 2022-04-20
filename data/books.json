@@ -1,14 +1,10 @@
 [
   {
-    "title" : "Mphatso",
+    "title" : "JavaScript",
     "author" : "Hammas"
   },
   {
-    "title" : "Malawi",
-    "author" : "chiwamba"
-  },
-  {
-    "title" : "Lilongwe",
-    "author" : "Min of tourism"
+    "title" : "Python",
+    "author" : "Mphatso"
   }
 ]
