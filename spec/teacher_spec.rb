@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 
 describe Teacher do
   before :each do
-    @teacher = Teacher.new("IT", 30, "Mphatso")
+    @teacher = Teacher.new('IT', 30, 'Mphatso')
   end
 
   context 'Testing the teacher class' do
@@ -11,7 +11,7 @@ describe Teacher do
     end
 
     it 'has age value age' do
-      expect(@teacher.age).to eql (30)
+      expect(@teacher.age).to eql(30)
     end
 
     it 'The name will return a value' do
@@ -37,6 +37,5 @@ describe Teacher do
     it 'should return service permit' do
       expect(@teacher.can_use_services?).to eq true
     end
-
   end
 end
